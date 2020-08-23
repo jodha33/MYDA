@@ -1,0 +1,74 @@
+<div class="wrapper">
+  <div class="overlay" *ngIf="isLoading">
+    <div class="spinner-wrapper">
+      <app-spinner></app-spinner>
+      <div id="loadingDiv">
+
+          <div class="loadingio-spinner-ellipsis-ikyl333scrn"><div class="ldio-9hopk0r6a8n">
+              <div></div><div></div><div></div><div></div><div></div>
+              </div></div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="loaded-content" [class.blurred]="isLoading">
+
+
+<div class="alert alert-success alert-dismissible fade show" *ngIf="showSuccess">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Success!</strong> Data Added Successfully
+  </div>
+  <div class="alert alert-danger alert-dismissible fade show" *ngIf="showError">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Error!</strong> Please try Again, some error occured.
+  </div>
+  <form class="form-signin"  [formGroup]="myform" (ngSubmit)='onSubmit()'>
+      <h1 class="h3 mb-3 font-weight-normal">Finance</h1>
+      <label for="inputEmail" class="sr-only">User</label>
+      <select class="custom-select d-block w-100" class="form-control" id="country" required="" formControlName='user'>
+        <option value="" >----Select-----</option>
+        <option [value]="user.name"  *ngFor="let user of Users" >{{user.name}}</option>
+        </select>
+      <label for="inputName" class="sr-only" >Date</label>
+      <input type="text" id="text" class="form-control" placeholder="Enter Date" required="" value="currentTime" formControlName='endDate'>
+      <label for="inputName" class="sr-only" >Amount</label>
+      <input type="text" id="text" class="form-control" placeholder="Enter Amount" required="" formControlName='amount'>
+      <label for="inputName" class="sr-only" >Status</label>
+      <select class="custom-select d-block w-100" class="form-control" id="status" required="" formControlName='status'>
+        <option value="true" >Yes</option>
+        <option value="false" >No</option>
+        </select>
+      <button class="btn btn-lg btn-primary btn-block"    type="submit" [disabled]="!myform.valid ">Submit</button>
+    </form>
+  
+
+    <div class='container-fluid'><br/>
+      <h4>Payment History</h4>  
+      <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Payment Date</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Status</th>
+              <th scope="col">Options</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let fin of finance">
+              <th>{{fin.name}}</th>
+              <td>{{fin.pt_date}}</td>
+              <td>{{fin.amt}}</td>
+              <td>{{fin.status}}</td>
+              <td><button type="button" class="btn btn-danger" (click)="deleteFinance(fin._id)">Delete</button></td>
+            </tr>
+            </tbody>
+            </table>   
+            <br/><br/>
+
+    
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+{
+    "/api": {
+      "target": "https://desolate-brook-57899.herokuapp.com/Users",
+      "secure": false,
+      "changeOrigin": true
+    }
+  }

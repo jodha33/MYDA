@@ -1,0 +1,49 @@
+<div class="wrapper">
+  <div class="overlay" *ngIf="isLoading">
+    <div class="spinner-wrapper">
+      <app-spinner></app-spinner>
+      <div id="loadingDiv">
+
+          <div class="loadingio-spinner-ellipsis-ikyl333scrn"><div class="ldio-9hopk0r6a8n">
+              <div></div><div></div><div></div><div></div><div></div>
+              </div></div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="loaded-content" [class.blurred]="isLoading">
+
+
+  
+
+
+<div class="alert alert-success alert-dismissible fade show" *ngIf="showSuccess">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Success!</strong> Time Added Successfully
+</div>
+<div class="alert alert-danger alert-dismissible fade show" *ngIf="showError">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Error!</strong> Please try Again, some error occured.
+</div>
+<form class="form-signin"  [formGroup]="myform" (ngSubmit)='onSubmit()'>
+    <h1 class="h3 mb-3 font-weight-normal">TimeSheet</h1>
+    
+    <label for="inputEmail" class="sr-only">User</label>
+    <select class="custom-select d-block w-100" class="form-control" id="country" required="" formControlName='user'>
+      <option value="" >----Select-----</option>
+      <option [value]="user.name"  *ngFor="let user of Users" >{{user.name}}</option>
+      
+      </select>
+    <label for="inputName" class="sr-only" >Date</label>
+    <input type="text" id="text" class="form-control" placeholder="Enter Date" required="" value="currentTime" formControlName='endDate'>
+    <label for="inputName" class="sr-only" >Hours</label>
+    <input type="text" id="text" class="form-control" value="2" placeholder="Enter Hours" required="" formControlName='hours'/>
+    <button class="btn btn-lg btn-primary btn-block"    type="submit" [disabled]="!myform.valid ">Submit</button>
+  </form>
+
+  
+  <ng-content></ng-content>
+</div>
+</div>

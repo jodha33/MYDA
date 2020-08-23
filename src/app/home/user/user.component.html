@@ -1,0 +1,42 @@
+<div class="wrapper">
+  <div class="overlay" *ngIf="isLoading">
+    <div class="spinner-wrapper">
+      <app-spinner></app-spinner>
+      <div id="loadingDiv">
+
+          <div class="loadingio-spinner-ellipsis-ikyl333scrn"><div class="ldio-9hopk0r6a8n">
+              <div></div><div></div><div></div><div></div><div></div>
+              </div></div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="loaded-content" [class.blurred]="isLoading">
+
+
+
+
+
+<div class="alert alert-success alert-dismissible fade show" *ngIf="showSuccess">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Success!</strong> User Added Successfully
+</div>
+<div class="alert alert-danger alert-dismissible fade show" *ngIf="showError">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Error!</strong> Please try Again, some error occured.
+</div>
+    <form class="form-signin"  [formGroup]="myform" (ngSubmit)='onSubmit()'>
+       
+        <h1 class="h3 mb-3 font-weight-normal">Add User</h1>
+        <label for="inputName" class="sr-only" >Name</label>
+        <input type="text" id="text" class="form-control" placeholder="Enter Name" required="" formControlName='name' >
+        <label for="inputName" class="sr-only" >Date</label>
+        <input type="text" id="text" class="form-control" placeholder="Enter Start Date" required="" formControlName='date' >
+        <button class="btn btn-lg btn-primary btn-block" [disabled]="!myform.valid "   type="submit">Submit</button>
+      </form>
+      <ng-content></ng-content>
+    </div>
+  </div>
+
