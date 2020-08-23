@@ -17,6 +17,7 @@ export class DataComponent implements OnInit{
     id=[];
     FinalData=[];
     hoursCount=[];
+    savedData=[];
     constructor(private userService:UserService){
         this.showSuccess=false;
         this.showError=false;
@@ -29,9 +30,11 @@ export class DataComponent implements OnInit{
 
             this.userService.getTimesheet().subscribe((data)=>{
                 data=data.sort(function (a,b){
-                    return a._id-b._id;
+                    return b._id.localeCompare(a._id);
                 });
                 this.timeData=data;
+                this.savedData=this.timeData  ;
+                console.log("Data---");
                 console.log(this.timeData);
      
                 var k=0;
@@ -113,5 +116,21 @@ export class DataComponent implements OnInit{
 
           },error=>{console.log("Error occured");this.showError=true; this.isLoading=false;});
          
+    }
+
+    defunc(searchValue: string){
+
+        if(searchValue=="" &&this.savedData.length>0){
+            this.timeData=this.savedData;
+        }else{
+            this.timeData=this.savedData;
+        console.log("Im Called"+searchValue); 
+      
+        this.timeData=this.timeData.filter(function(item){
+            return item.name.includes(searchValue)
+        });
+        console.log(this.timeData);
+    }
+
     }
 }
