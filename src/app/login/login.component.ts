@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    if(this.myform.get('username').value=="Jodha" && this.myform.get('password').value=='Winter@123abc'){
+    if(this.myform.get('username').value=="panda@panda.com" && this.myform.get('password').value=='Winter@123abc'){
       this.router.navigate(["/home"]);
     }
 }

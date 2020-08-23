@@ -18,6 +18,7 @@ export class DataComponent implements OnInit{
     FinalData=[];
     hoursCount=[];
     savedData=[];
+    savedFinalData=[];
     constructor(private userService:UserService){
         this.showSuccess=false;
         this.showError=false;
@@ -55,6 +56,7 @@ export class DataComponent implements OnInit{
                 }
                // this.FinalData=this.userData.map((item,index)=>({...item,...this.hoursCount[index]}));
                 console.log("Final Data");
+                this.savedFinalData=this.FinalData;
                 console.log(this.FinalData); 
             });
        });
@@ -122,11 +124,16 @@ export class DataComponent implements OnInit{
 
         if(searchValue=="" &&this.savedData.length>0){
             this.timeData=this.savedData;
+            this.FinalData=this.savedFinalData;
         }else{
             this.timeData=this.savedData;
+            this.FinalData=this.savedFinalData;
         console.log("Im Called"+searchValue); 
       
         this.timeData=this.timeData.filter(function(item){
+            return item.name.includes(searchValue)
+        });
+        this.FinalData=this.FinalData.filter(function(item){
             return item.name.includes(searchValue)
         });
         console.log(this.timeData);
